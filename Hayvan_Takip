@@ -1,0 +1,121 @@
+// Animal sınıfı, temel sınıfı temsil eder
+class Animal {
+    private String species;
+    private double weight;
+    private int age;
+
+    public Animal(String species, double weight, int age) {
+        this.species = species;
+        this.weight = weight;
+        this.age = age;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public double getDosage() {
+        // Dozaj hesaplaması için ortak bir metot
+        return weight * 0.02;
+    }
+
+    public String getFeedSchedule() {
+        // Yemleme programı için ortak bir metot
+        return "Günde iki kez besleyin.";
+    }
+}
+
+// Horse sınıfı, Animal sınıfından türer
+class Horse extends Animal {
+    public Horse(String species, double weight, int age) {
+        super(species, weight, age);
+    }
+
+    @Override
+    public double getDosage() {
+        // Atlar için özgün dozaj hesaplaması
+        return getWeight() * 0.03;
+    }
+
+    @Override
+    public String getFeedSchedule() {
+        // Atlar için özgün yemleme programı
+        return "Sabah ve akşam ot verin, öğlen yulaf ezmesi ekleyin.";
+    }
+}
+
+// Felidae sınıfı, Animal sınıfından türer
+class Felidae extends Animal {
+    public Felidae(String species, double weight, int age) {
+        super(species, weight, age);
+    }
+
+    @Override
+    public double getDosage() {
+        // Kedigiller için özgün dozaj hesaplaması
+        return getWeight() * 0.01;
+    }
+
+    @Override
+    public String getFeedSchedule() {
+        // Kedigiller için özgün yemleme programı
+        return "Günde bir kez et verin.";
+    }
+}
+
+// Rodent sınıfı, Animal sınıfından türer
+class Rodent extends Animal {
+    public Rodent(String species, double weight, int age) {
+        super(species, weight, age);
+    }
+
+    @Override
+    public double getDosage() {
+        // Kemirgenler için özgün dozaj hesaplaması
+        return getWeight() * 0.005;
+    }
+
+    @Override
+    public String getFeedSchedule() {
+        // Kemirgenler için özgün yemleme programı
+        return "Günde bir sebze ve tohum verin.";
+    }
+}
+
+public class Zoo {
+    public static void main(String[] args) {
+        // Örnek hayvanlar oluşturun
+        Horse horse = new Horse("At", 500.0, 5);
+        Felidae tiger = new Felidae("Kaplan", 200.0, 7);
+        Rodent rat = new Rodent("Sıçan", 0.5, 1);
+
+        // Her hayvan için bilgileri yazdırın
+        System.out.println("Hayvan: " + horse.getSpecies());
+        System.out.println("Ağırlık: " + horse.getWeight() + " kg");
+        System.out.println("Yaş: " + horse.getAge() + " yıl");
+        System.out.println("İlaç Dozajı: " + horse.getDosage() + " ml");
+        System.out.println("Yemleme Programı: " + horse.getFeedSchedule());
+        System.out.println();
+
+        System.out.println("Hayvan: " + tiger.getSpecies());
+        System.out.println("Ağırlık: " + tiger.getWeight() + " kg");
+        System.out.println("Yaş: " + tiger.getAge() + " yıl");
+        System.out.println("İlaç Dozajı: " + tiger.getDosage() + " ml");
+        System.out.println("Yemleme Programı: " + tiger.getFeedSchedule());
+        System.out.println();
+
+        System.out.println("Hayvan: " + rat.getSpecies());
+        System.out.println("Ağırlık: " + rat.getWeight() + " kg");
+        System.out.println("Yaş: " + rat.getAge() + " yıl");
+        System.out.println("İlaç Dozajı: " + rat.getDosage() + " ml");
+        System.out.println("Yemleme Programı: " + rat.getFeedSchedule());
+    }
+}
